@@ -38,4 +38,4 @@ jobs:
       with:
         name: my-artifact
           #path: "$SLN_ABSPATH/artifcat.txt"
-        path: "${{ SLN_ABSPATH }}/${{ PROJECT_NAME }}/bin"
+        path: "${{vars.SLN_ABSPATH }}/${{vars.PROJECT_NAME }}/bin"
