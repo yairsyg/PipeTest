@@ -12,7 +12,7 @@ on:
 env:
   SLN_ABSPATH: "${{ github.workspace }}/ProxyDLLApp"
   PROJECT_NAME: "ProxyDLL"
-  ARTIFACT_DIR: "${{ github.workspace }}/artifcats"
+  ARTIFACT_DIR: "${{ github.workspace }}/artifacts"
 
 jobs:
   build:
