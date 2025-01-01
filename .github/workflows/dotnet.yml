@@ -32,6 +32,8 @@ jobs:
       run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
     - name: Run the application
       run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$SLN_ABSPATH/artifcat.txt" "This is a legit workflow"
+    - name: Debug commands
+      run: ls -laR "$SLN_ABSPATH"
     - uses: actions/upload-artifact@v4
       with:
         name: my-artifact
