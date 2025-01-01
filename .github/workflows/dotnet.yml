@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Create artifact dir
-      run: mkdir "$ARTIFACT_DIR"
+      run: mkdir -p "$ARTIFACT_DIR"
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
