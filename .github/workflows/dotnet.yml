@@ -37,4 +37,4 @@ jobs:
       with:
         name: my-artifact
         overwrite: true
-        path: "${{ vars.ARTIFACT_DIR }}/ar"
+        path: "/tmp/artifacts"
