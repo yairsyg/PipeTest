@@ -24,6 +24,8 @@ jobs:
       run: pwd && ls
     - name: CD to project directory
       run: cd ProxyDLLApp
+    - name: Debug commands 2
+      run: pwd && ls
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
