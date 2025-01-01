@@ -27,9 +27,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore $SLN_ABSPATH
     - name: Build
-      run: dotnet build --no-restore $SLN_DIR
+      run: dotnet build --no-restore $SLN_ABSPATH
     - name: Test
-      run: dotnet test --no-build --verbosity normal $SLN_DIR
+      run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
     - name: Run the application
       run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$SLN_ABSPATH/artifcat.txt" "This is a legit workflow"
     - uses: actions/upload-artifact@v4
