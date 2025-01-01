@@ -12,6 +12,7 @@ on:
 env:
   SLN_ABSPATH: "${{ github.workspace }}/ProxyDLLApp"
   PROJECT_NAME: "ProxyDLL"
+  ARTIFACT_DIR: "${{ github.workspace }}/artifcats"
 
 jobs:
   build:
@@ -19,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Create artifcat dir
+      run: mkdir "$ARTIFACT_DIR"
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -31,11 +34,10 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
     - name: Run the application
-      run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$SLN_ABSPATH/artifcat.txt" "This is a legit workflow"
+      run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$ARTIFCATS_DIR/artifcat.txt" "This is a legit workflow"
     - name: Debug commands
       run: ls -laR "$SLN_ABSPATH"
     - uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-          #path: "$SLN_ABSPATH/artifcat.txt"
-        path: "${{vars.SLN_ABSPATH }}/${{vars.PROJECT_NAME }}/bin"
+        path: "${{vars.ARTIFCATS_DIR }}"
