@@ -12,6 +12,7 @@ switch (args.Length)
         text = args[1];
 		break;
 	default:
+        Console.WriteLine("Incorrect args provided");
 		return;
 }
 
