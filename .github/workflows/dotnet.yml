@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  SLN_DIR: "${{ github.workspace }}/ProxyDLLApp"
+
 jobs:
   build:
 
@@ -20,15 +23,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Debug commands
-      run: pwd && ls
-    - name: CD to project directory
-      run: cd ProxyDLLApp
-    - name: Debug commands 2
-      run: pwd && ls
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore $SLN_DIR
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore $SLN_DIR
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal $SLN_DIR
