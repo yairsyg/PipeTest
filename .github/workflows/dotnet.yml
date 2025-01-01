@@ -34,7 +34,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
     - name: Debug command
-      run: ls "$ARTIFACT_DIR"
+      run: ls "${{ github.workspace }}"
     - name: Run the application
       run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$ARTIFACT_DIR/artifact.txt" "This is a legit workflow"
     - uses: actions/upload-artifact@v4
