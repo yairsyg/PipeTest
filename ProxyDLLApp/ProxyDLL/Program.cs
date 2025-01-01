@@ -16,4 +16,6 @@ switch (args.Length)
 		return;
 }
 
+Console.WriteLine($"Writing the content \"{args[1]}\" to the path \"{args[0]}\"");
+
 File.WriteAllText(args[0], text);
