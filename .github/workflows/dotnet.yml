@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Create artifcat dir
+    - name: Create artifact dir
       run: mkdir "$ARTIFACT_DIR"
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -33,9 +33,11 @@ jobs:
       run: dotnet build --no-restore $SLN_ABSPATH
     - name: Test
       run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
+    - name: Debug command
+      run: ls "$ARTIFACT_DIR"
     - name: Run the application
       run: dotnet run --project "$SLN_ABSPATH/$PROJECT_NAME" "$ARTIFACT_DIR/artifact.txt" "This is a legit workflow"
     - uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-        path: "${{vars.ARTIFCAT_DIR }}"
+        path: "${{vars.ARTIFACT_DIR }}"
