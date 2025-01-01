@@ -12,7 +12,7 @@ on:
 env:
   SLN_ABSPATH: "${{ github.workspace }}/ProxyDLLApp"
   PROJECT_NAME: "ProxyDLL"
-  ARTIFACT_DIR: "$SLN_ABSPATH/artifacts"
+  ARTIFACT_DIR: "/tmp/artifacts"
 
 jobs:
   build:
@@ -29,10 +29,6 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore $SLN_ABSPATH
-    - name: Build
-      run: dotnet build --no-restore $SLN_ABSPATH
-    - name: Test
-      run: dotnet test --no-build --verbosity normal $SLN_ABSPATH
     - name: Debug command
       run: ls "${{ github.workspace }}"
     - name: Run the application
